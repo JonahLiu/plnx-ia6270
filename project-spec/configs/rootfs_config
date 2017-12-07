@@ -4123,7 +4123,14 @@ CONFIG_tcpdump=y
 # apps 
 #
 # CONFIG_gpio-demo is not set
+CONFIG_ia6270-testapp=y
 # CONFIG_peekpoke is not set
+
+#
+# modules 
+#
+CONFIG_ia6270-ser=y
+CONFIG_ia6270-testmod=y
 
 #
 # user packages 

@@ -1,3 +1,18 @@
 /include/ "system-conf.dtsi"
 / {
 };
+
+&amba {
+	ser0: ia6270-ser@83c00000 {
+		compatible = "ia6270,ia6270-ser";
+		reg = <0x83c00000 0x10000>;
+		interrupt-parent = <&intc>;
+		interrupts = <0 45 1>;
+	};
+
+	vid0: ia6270-vid@43c00000 {
+		compatible = "ia6270,ia6270-vid";
+		reg = <0x43c00000 0x10000>;
+	};
+
+};
