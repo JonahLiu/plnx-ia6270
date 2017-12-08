@@ -5,6 +5,7 @@
 #include <linux/pci.h>
 #include <linux/cdev.h>
 #include <linux/wait.h>
+#include <linux/sched.h>
 #include <linux/workqueue.h>
 #include <linux/completion.h>
 #include <linux/spinlock.h>
