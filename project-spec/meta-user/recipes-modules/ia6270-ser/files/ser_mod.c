@@ -116,10 +116,10 @@ static int ia6270_ser_probe(struct platform_device *pdev)
 		(unsigned int __force)lp->base_addr,
 		lp->irq);
 
-	lp->dev = dev;
+	lp->parent = dev;
 
-	init_waitqueue_head(&lp->r_wait);
 	mutex_init(&lp->r_mutex);
+	init_waitqueue_head(&lp->r_wait);
 
 	ser_add_cdev(lp);
 
@@ -139,6 +139,9 @@ static int ia6270_ser_remove(struct platform_device *pdev)
 	struct ser_dev *lp = dev_get_drvdata(dev);
 
 	ser_del_cdev(lp);
+
+	mutex_destroy(&lp->r_mutex);
+
 	if(lp->irq) free_irq(lp->irq, lp);
 	release_mem_region(lp->mem_start, lp->mem_end - lp->mem_start + 1);
 	kfree(lp);

@@ -30,6 +30,7 @@ struct ser_dev
 	unsigned long mem_end;
 	void __iomem *base_addr;
 
+	struct device *parent;
 	struct device *dev;
 	struct cdev cdev;
 
