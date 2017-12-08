@@ -19,3 +19,7 @@
 &i2c0 {
 	clock-frequency = <0xC350>;
 };
+
+&flash0 {
+	compatible = "s25fl256s1";
+};
