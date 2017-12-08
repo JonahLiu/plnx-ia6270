@@ -14,5 +14,8 @@
 		compatible = "ia6270,ia6270-vid";
 		reg = <0x43c00000 0x10000>;
 	};
+};
 
+&i2c0 {
+	clock-frequency = <0xC350>;
 };

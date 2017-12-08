@@ -4125,6 +4125,7 @@ CONFIG_tcpdump=y
 # CONFIG_gpio-demo is not set
 CONFIG_ia6270-testapp=y
 # CONFIG_peekpoke is not set
+CONFIG_sil9293=y
 
 #
 # modules 
