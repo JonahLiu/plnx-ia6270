@@ -49,15 +49,14 @@ int ser_start(struct ser_dev *dev)
 	dev->buf_end = dev->buf_start+BufferSize;
 	dev->buf_ptr = dev->buf_start;
 
-	dev_err(dev->dev,"DMA memory 0x%08x - 0x%08x\n", 
+	dev_dbg(dev->dev,"DMA memory 0x%08x - 0x%08x\n", 
 		dev->buf_phys, dev->buf_phys+BufferSize);
 
-/*
 	regs->block_size= BlockSize;
 	regs->start_address = dev->buf_phys;
 	regs->end_address = dev->buf_phys+BufferSize;
 	regs->ctrl = 1;
-*/
+
 	return 0;
 }
 
@@ -65,11 +64,9 @@ int ser_stop(struct ser_dev *dev)
 {
 	struct ser_regs *regs = dev->base_addr;
 
-/*
 	regs->ctrl = 0;
 	while(regs->stat & 0x1)
 		msleep(1);
-*/
 		
 	dma_free_coherent(dev->parent, BufferSize, dev->buf_start, dev->buf_phys);
 	return 0;

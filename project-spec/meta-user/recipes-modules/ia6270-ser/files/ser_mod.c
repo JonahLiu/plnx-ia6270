@@ -64,7 +64,7 @@ static int ia6270_ser_probe(struct platform_device *pdev)
 	struct ser_dev *lp = NULL;
 
 	int rc = 0;
-	dev_info(dev, "Device Tree Probing\n");
+	dev_dbg(dev, "Device Tree Probing\n");
 	/* Get iospace for the device */
 	r_mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (!r_mem) {
@@ -108,7 +108,7 @@ static int ia6270_ser_probe(struct platform_device *pdev)
 	}
 	else {
 		lp->irq = 0;
-		dev_info(dev, "no IRQ found\n");
+		dev_err(dev, "no IRQ found\n");
 	}
 
 	dev_info(dev,"ia6270-ser at 0x%08x mapped to 0x%08x, irq=%d\n",
@@ -172,7 +172,7 @@ static struct platform_driver ia6270_ser_driver = {
 
 static int __init ia6270_ser_init(void)
 {
-	printk("<1>IA6270 SER driver.\n");
+	printk(KERN_INFO "IA6270 SER driver.\n");
 	ser_setup_cdev();
 	if(platform_driver_register(&ia6270_ser_driver)) {
 		goto err0;

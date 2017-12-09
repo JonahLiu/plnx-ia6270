@@ -146,7 +146,7 @@ static ssize_t fop_read(struct file *filp, char __user *buf, size_t count, loff_
     struct ser_dev *dev = filp->private_data;
 	size_t size=0;
 
-    dev_err(dev->dev, "fop read %zd @ %p\n", count, buf);    
+    //dev_dbg(dev->dev, "fop read %zd @ %p\n", count, buf);    
 
     /* lock mutex to keep transaction integrity */
     if(mutex_lock_interruptible(&dev->r_mutex)){
@@ -159,7 +159,7 @@ static ssize_t fop_read(struct file *filp, char __user *buf, size_t count, loff_
 		if(size){
 			void *ptr = ser_next_read_ptr(dev);
 
-			dev_err(dev->dev, "got data 0x%p 0x%zx\n", ptr, size);
+			//dev_dbg(dev->dev, "got data 0x%p 0x%zx\n", ptr, size);
 
 			if(size > count)
 				size = count;
@@ -176,7 +176,7 @@ static ssize_t fop_read(struct file *filp, char __user *buf, size_t count, loff_
         }
         else {
             /* wait for ready */
-            dev_err(dev->dev,"read: going to sleep\n");
+            //dev_dbg(dev->dev,"read: going to sleep\n");
             wait_event_interruptible_timeout(dev->r_wait,
                     ser_next_read_size(dev),HZ);
             if(signal_pending(current)){
@@ -184,7 +184,7 @@ static ssize_t fop_read(struct file *filp, char __user *buf, size_t count, loff_
 				break;
             }
             else {
-                dev_dbg(dev->dev,"read: wake up\n");
+                //dev_dbg(dev->dev,"read: wake up\n");
             }
         }
 
@@ -200,7 +200,7 @@ ERR:
 static ssize_t fop_write(struct file *filp, const char __user *buf, size_t count, loff_t *fpos)
 {
     struct ser_dev *dev = filp->private_data;
-    dev_dbg(dev->dev, "fop write %zd @ %p\n", count, buf);    
+    //dev_dbg(dev->dev, "fop write %zd @ %p\n", count, buf);    
 	return count;
 }
 
@@ -209,7 +209,7 @@ static unsigned int fop_poll(struct file *filp, struct poll_table_struct *wait)
 	struct ser_dev *dev = filp->private_data;
 	unsigned int mask=0;
 
-    dev_dbg(dev->dev, "fop poll\n");    
+    //dev_dbg(dev->dev, "fop poll\n");    
 
 	/* check for read */
 	poll_wait(filp, &dev->r_wait, wait);
