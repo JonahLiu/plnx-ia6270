@@ -18,6 +18,6 @@ S = "${WORKDIR}"
 inherit update-rc.d
 
 do_install() {
-	     install -d ${D}/${sysconfdir}/init.d/
-	     install -m 0755 ${S}/sil9293.sh ${D}/${sysconfdir}/init.d/sil9293
+	     install -d ${D}${sysconfdir}/init.d/
+	     install -m 0755 sil9293.sh ${D}${sysconfdir}/init.d/sil9293
 }
