@@ -4125,6 +4125,7 @@ CONFIG_tcpdump=y
 # CONFIG_gpio-demo is not set
 # CONFIG_ia6270-testapp is not set
 # CONFIG_peekpoke is not set
+CONFIG_serd=y
 CONFIG_sil9293=y
 
 #
@@ -4132,6 +4133,7 @@ CONFIG_sil9293=y
 #
 CONFIG_ia6270-ser=y
 # CONFIG_ia6270-testmod is not set
+CONFIG_ia6270-vid=y
 
 #
 # user packages 

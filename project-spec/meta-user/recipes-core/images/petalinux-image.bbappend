@@ -6,3 +6,6 @@ IMAGE_INSTALL_append = " ia6270-testmod"
 IMAGE_INSTALL_append = " ia6270-testapp"
 IMAGE_INSTALL_append = " ia6270-ser"
 IMAGE_INSTALL_append = " sil9293"
+IMAGE_INSTALL_append = " ia6270-vid"
+IMAGE_INSTALL_append = " serd"
+
